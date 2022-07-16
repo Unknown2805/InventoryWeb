@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+Route::post('/dashboard/tambah', [ProfileController::class, 'store']);
+Route::put('/dashboard/edit/{id}', [App\Http\Controllers\ProfileController::class, 'EditProfile']);
+
