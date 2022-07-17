@@ -75,8 +75,8 @@
                                 <span>Data Products</span>
                             </a>
                             <ul class="submenu ">
-                                <li class="submenu-item {{ request()->is('kas-masjid-pemasukan*') ? 'active' : '' }}">
-                                    <a href={{ url('kas-masjid-pemasukan') }}>Stock Products</a>
+                                <li class="submenu-item {{ request()->is('in*') ? 'active' : '' }}">
+                                    <a href={{ url('in') }}>Stock Products</a>
                                 </li>
                                 <li class="submenu-item {{ request()->is('kas-masjid-pengeluaran*') ? 'active' : '' }}">
                                     <a href={{ url('kas-masjid-pengeluaran') }}>Products</a>
@@ -89,26 +89,13 @@
                    
 
                         {{-- Kas Masjid --}}
-                        <li class="sidebar-item  has-sub">
-                            <a href="#" class='sidebar-link'>
-                                <i class="bi bi-bell-fill"></i>
-                                <span>Laporan</span>
+                        <li class="sidebar-item  ">
+                            <a href="{{ url('/rekap') }}" class='sidebar-link'>
+                                <i class="bi bi-calendar-event-fill"></i>
+                                <span>Report</span>
                             </a>
-                            <ul class="submenu ">
-                                <li class="submenu-item {{ request()->is('kas-masjid-pemasukan*') ? 'active' : '' }}">
-                                    <a href={{ url('kas-masjid-pemasukan') }}>Products In</a>
-                                </li>
-                                <li class="submenu-item {{ request()->is('kas-masjid-pengeluaran*') ? 'active' : '' }}">
-                                    <a href={{ url('kas-masjid-pengeluaran') }}>Products Out</a>
-                                </li>
-                            </ul>
                         </li>
-                        {{-- Kas Sosial --}}
-                        
-                        
-                           
-
-                        {{-- Print rekap --}}
+                    
                        
                         <li class="sidebar-title">Settings</li>
 
@@ -130,7 +117,7 @@
                         </li>
                             {{-- @endhasrole --}}
 
-                        {{-- <li class="sidebar-item  ">
+                        <li class="sidebar-item  ">
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();" class="sidebar-link">
                                 <i class="bi bi-arrow-left-square-fill"></i>
@@ -141,7 +128,7 @@
                                 class="d-none">
                                 @csrf
                             </form>
-                        </li> --}}
+                        </li>
                 </div>
             </div>
         </div>
