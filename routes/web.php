@@ -23,3 +23,8 @@ Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 Route::post('/dashboard/tambah', [ProfileController::class, 'store']);
 Route::put('/dashboard/edit/{id}', [App\Http\Controllers\ProfileController::class, 'EditProfile']);
 
+
+Auth::routes();
+
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
