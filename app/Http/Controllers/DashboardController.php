@@ -18,6 +18,10 @@ class DashboardController extends Controller
         return view('dashboard', compact('data'));
     }
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Show the form for creating a new resource.
      *
