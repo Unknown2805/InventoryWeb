@@ -29,6 +29,8 @@ Route::put('/dashboard/edit/{id}', [App\Http\Controllers\ProfileController::clas
 Route::get('/in', [ProductsInController::class, 'in']);
 Route::post('/store-in', [ProductsInController::class, 'StoreIn']);
 Route::put('/editIn/{id}', [ProductsInController::class, 'editIn']);
+Route::delete('/deleteIn/delete/{id}', [ProductsInController::class, 'destroy']);
+
 
 //rekap
 Route::get('/all', [ProductsInController::class, 'rekap']);

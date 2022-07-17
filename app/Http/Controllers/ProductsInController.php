@@ -60,4 +60,13 @@ class ProductsInController extends Controller
 
         return redirect()->back();
     }
+
+    public function destroy($id)
+    {
+        $data = ProductsIn::find($id);
+
+        $data->delete();
+
+        return redirect()->back();
+    }
 }
