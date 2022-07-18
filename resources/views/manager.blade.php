@@ -41,6 +41,13 @@
                                 <label for="floatingPassword">Password</label>
                             </div>
                         </div>
+                        <div class="col-md-12 mb-4">
+                            <div class="form-floating">
+                                <input required type="file" class="form-control mt-3 "
+                                    placeholder="Profile" name="gambar">
+                                <label for="floatingPassword">Image Profile</label>
+                            </div>
+                        </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary btn_add mt-3">Submit</button>
                         </div>
@@ -52,7 +59,7 @@
             </div>
         </div>
     </div>
-    @foreach ($manager as $d)
+    @foreach ($user as $d)
         <div class="modal fade" id="delete{{ $d->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -104,19 +111,23 @@
                         @php
                             $serial = 1;
                         @endphp
-                        @foreach ($manager as $manager)
-                            <tr>
-                                <td>{{ $serial++ }}</td>
-                                <td><img src="{{ asset('/storage/event/' . $d->gambar) }}" alt="" width="170"
-                                        height="170"></td>
-                                <td>{{ $manager->name }}</td>
-                                <td>{{ $manager->email }}</td>
-                                <td>{{ $manager->roles->pluck('name')->implode('') }}</td>
-                                <td>
-                                    <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
-                                        data-bs-target="#delete{{ $d->id }}">delete</i></a>
-                                </td>
-                            </tr>
+                        @foreach ($user as $u)
+                        <tr>
+                            <td>{{ $serial++ }}</td>
+                            @if($u->gambar == null)
+                            <td><img src="assets/images/faces/1.jpg" alt="". width="170" height="170"></td>
+                            @else
+                            <td><img src="{{asset('/storage/User/' . $u->gambar) }}" alt="". width="170" height="170"></td>
+                            @endif
+                            <td>{{ $u->name }}</td>
+                            <td>{{ $u->email }}</td>
+                            <td>{{ $u->roles->pluck('name')->implode('') }}</td>
+                            <td>
+                                <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#delete{{ $u->id }}">delete</i></a>
+
+                            </td>
+                        </tr>
                         @endforeach
                     </table>
                 </div>

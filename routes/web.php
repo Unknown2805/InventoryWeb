@@ -28,7 +28,9 @@ Route::get('/', [DashboardController::class, 'dashboard']);
  //dashboard
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
 Route::post('/dashboard/tambah', [ProfileController::class, 'store']);
-Route::put('/dashboard/edit/{id}', [App\Http\Controllers\ProfileController::class, 'EditProfile']);
+Route::put('/dashboard/edit-owner/{id}', [App\Http\Controllers\DashboardController::class, 'EditOwner']);
+Route::put('/dashboard/edit-manager/{id}', [App\Http\Controllers\DashboardController::class, 'EditManager']);
+
 
 //In
 Route::get('/in', [ProductsInController::class, 'in']);

@@ -15,8 +15,8 @@ class ProductsOut extends Model
         'barang',
         'qty',
         'in',
-        'out',
         'jenis',
+        
     ];
 
 }

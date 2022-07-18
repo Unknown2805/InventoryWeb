@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Profile;
+use App\Models\User;
+
 
 class DashboardController extends Controller
 {
@@ -14,8 +16,10 @@ class DashboardController extends Controller
      */
     public function dashboard()
     {
-        $data = Profile::all();
-        return view('dashboard', compact('data'));
+        $owner = User::orderBy('name', 'ASC')->role('owner')->get();
+        $manager = User::orderBy('name', 'ASC')->role('manager')->get(); 
+        
+        return view('dashboard', compact('owner','manager'));
     }
 
     public function __construct()
@@ -60,10 +64,57 @@ class DashboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function EditOwner(Request $request,$id){
+        $data = User::where('id',$id)->orderBy('name', 'ASC')->role('owner')->firstOrFail();
+
+        $request->validate([
+            'gambar' => 'required|file|max:3072',
+            'name' => 'required',
+            
+        ]);
+
+        $data->name = $request->name;
+       
+        
+        $img = $request->file('gambar');
+        $filename = $img->getClientOriginalName();
+
+        if ($request->hasFile('gambar')) {
+            $request->file('gambar')->storeAs('/profile',$filename);
+        }
+        $data->gambar = $request->file('gambar')->getClientOriginalName();
+        // dd($data);
+        $data->update();
+
+        return redirect()->back();
     }
+
+    public function EditManager(Request $request,$id){
+        $data = User::where('id',$id)->orderBy('name', 'ASC')->role('manager')->firstOrFail();
+
+        $request->validate([
+            'gambar' => 'required|file|max:3072',
+            'name' => 'required',
+            
+        ]);
+
+        $data->name = $request->name;
+       
+        
+        $img = $request->file('gambar');
+        $filename = $img->getClientOriginalName();
+
+        if ($request->hasFile('gambar')) {
+            $request->file('gambar')->storeAs('/profile',$filename);
+        }
+        $data->gambar = $request->file('gambar')->getClientOriginalName();
+        // dd($data);
+        $data->update();
+
+        return redirect()->back();
+    }
+
+
 
     /**
      * Update the specified resource in storage.

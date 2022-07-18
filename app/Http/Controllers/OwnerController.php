@@ -35,12 +35,26 @@ class OwnerController extends Controller
         $this->validate($request, [
             "name" => 'required',
             "email" => 'required',
-            "password" => 'required|min:8'
+            "password" => 'required|min:8',
+            "gambar" => 'required|file|max:3072',
+
+
         ]);
         $data = new User();
         $data->name = $request->name;
         $data->email = $request->email;
         $data->password = Hash::make($request->password);
+
+        $img = $request->file('gambar');
+        $filename = $img->getClientOriginalName();
+        
+        if ($request->hasFile('gambar')) {
+            $request->file('gambar')->storeAs('/User',$filename);
+        }
+
+        $data->gambar = $request->file('gambar')->getClientOriginalName();
+
+        // dd($data);
         $data->save();
         $data->assignRole('owner');
 

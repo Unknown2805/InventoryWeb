@@ -15,8 +15,7 @@ class Products extends Model
 
         'barang',
         'qty',
-        'in',
-        'out',
+        'price',
         'jenis',
     ];
 

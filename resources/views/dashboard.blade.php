@@ -33,45 +33,45 @@
     </div>
     
     <div class="page-heading" style="cursor:pointer">
-        @if (!isset($data[0]->nama))
-                            
-                            {{-- @hasrole('admin') --}}
-                            <a data-bs-toggle="modal" data-bs-target="#exampleModal">
-        
+    
 
-                                    <div class="text-start" >
-                                        <div class="avatar avatar-lg">  
-                                            <img src="assets/images/faces/masjidsamping.jpg"/> 
-                                        </div>  
-                                        <span class="font-bold ms-1" style="font-size: 24px" >
-                                            Nama Masjid
-                                        </span>
-                            
-                                    </div>
-                            </a>
-                            {{-- @endhasrole --}}
-                          
-
-            @else
-                   
-                   
-                            @foreach ($data as $d)
-                                    <a data-bs-toggle="modal" data-bs-target="#editProfile{{ $d->id }}">
+        @hasrole('owner')
+            
+                <a data-bs-toggle="modal" data-bs-target="#editProfile{{ Auth::user()->id }}">
                                 
-                                        <div class="text-start">
-                                            <div class="avatar avatar-lg">  
-                                                <img src="{{ asset('/storage/profile/'.$d->gambar) }}">
-                                            </div>
-                                            <span class="font-bold ms-1" style="font-size: 24px">
-                                                {{ $d->nama }}
-                                            </span>  
-                                        </div>
+                    <div class="text-start">
+                        <div class="avatar avatar-lg">  
+                            <img src="{{ Auth::user()->gambar == null ? asset('assets/images/faces/1.jpg') : asset('/storage/profile/'.Auth::user()->gambar) }}">
+                        </div>
+                        <span class="font-bold ms-1" style="font-size: 24px">
+                            {{ Auth::user()->name }}
+                       </span>  
+                    </div>
                                         
-                                    </a>
+                </a>
+          
+        @endhasrole
 
-                            @endforeach
+        @hasrole('manager')
 
-            @endif
+                <a data-bs-toggle="modal" data-bs-target="#editManager{{ Auth::user()->id }}">
+                                
+                    <div class="text-start">
+                        <div class="avatar avatar-lg">  
+                            <img src="{{ Auth::user()->gambar == null ? asset('assets/images/faces/1.jpg') : asset('/storage/profile/'. Auth::user()->gambar) }}">
+                        </div>
+                        <span class="font-bold ms-1" style="font-size: 24px">
+                            {{ Auth::user()->name }}
+                    </span>  
+                    </div>
+                                        
+                </a>
+
+        @endhasrole
+
+
+
+        
     </div>
 
 

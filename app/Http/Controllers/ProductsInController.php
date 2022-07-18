@@ -69,4 +69,9 @@ class ProductsInController extends Controller
 
         return redirect()->back();
     }
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 }
