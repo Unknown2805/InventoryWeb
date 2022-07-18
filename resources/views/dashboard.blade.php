@@ -37,7 +37,7 @@
 
         @hasrole('owner')
             
-                <a data-bs-toggle="modal" data-bs-target="#editProfile{{ Auth::user()->id }}">
+                <a data-bs-toggle="modal" data-bs-target="#editOwner{{ Auth::user()->id }}">
                                 
                     <div class="text-start">
                         <div class="avatar avatar-lg">  

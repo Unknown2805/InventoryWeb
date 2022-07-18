@@ -113,12 +113,8 @@
                         @endphp
                         @foreach ($user as $u)
                             <tr>
-                                <td>{{ $serial++ }}</td>
-                                @if($u->gambar == null)
-                                <td><img src="assets/images/faces/1.jpg" alt="". width="170" height="170"></td>
-                                @else
-                                <td><img src="{{asset('/storage/User/' . $u->gambar) }}" alt="". width="170" height="170"></td>
-                                @endif
+                                <td>{{ $serial++ }}</td>                              
+                                <td> <img src="{{ Auth::user()->gambar == null ? asset('assets/images/faces/1.jpg') : asset('/storage/profile/'. $u->gambar) }}" alt="". width="100" height="100"></td>         
                                 <td>{{ $u->name }}</td>
                                 <td>{{ $u->email }}</td>
                                 <td>{{ $u->roles->pluck('name')->implode('') }}</td>
