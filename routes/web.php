@@ -4,10 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProductsInController;
-
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OwnerController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ManagerController;
 
 
@@ -27,16 +25,22 @@ Route::get('/', [DashboardController::class, 'dashboard']);
 
  //dashboard
 Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-Route::post('/dashboard/tambah', [ProfileController::class, 'store']);
 Route::put('/dashboard/edit-owner/{id}', [App\Http\Controllers\DashboardController::class, 'EditOwner']);
 Route::put('/dashboard/edit-manager/{id}', [App\Http\Controllers\DashboardController::class, 'EditManager']);
 
 
 //In
-Route::get('/in', [ProductsInController::class, 'in']);
-Route::post('/store-in', [ProductsInController::class, 'StoreIn']);
-Route::put('/editIn/{id}', [ProductsInController::class, 'editIn']);
-Route::delete('/deleteIn/delete/{id}', [ProductsInController::class, 'destroy']);
+Route::get('/in', [ProductsController::class, 'in']);
+Route::post('/store-in', [ProductsController::class, 'StoreIn']);
+Route::put('/editIn/{id}', [ProductsController::class, 'editIn']);
+//sale
+Route::get('/sale', [ProductsController::class, 'sale']);
+Route::put('/editOut/{id}', [ProductsController::class, 'editOut']);
+//out
+Route::get('/out', [ProductsController::class, 'out']);
+
+Route::delete('/deleteIn/delete/{id}', [ProductsController::class, 'destroy']);
+
 
 
 //rekap

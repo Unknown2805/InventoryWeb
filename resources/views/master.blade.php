@@ -80,12 +80,12 @@
                                     <a href={{ url('in') }}>Stock Products</a>
                                 </li>
                                 <li
-                                    class="submenu-item {{ request()->is('kas-masjid-pengeluaran*') ? 'active' : '' }}">
-                                    <a href={{ url('kas-masjid-pengeluaran') }}>Products</a>
+                                    class="submenu-item {{ request()->is('/sale*') ? 'active' : '' }}">
+                                    <a href={{ url('/sale') }}>Transaction</a>
                                 </li>
                                 <li
-                                    class="submenu-item {{ request()->is('kas-masjid-pengeluaran*') ? 'active' : '' }}">
-                                    <a href={{ url('kas-masjid-pengeluaran') }}>Sold Products</a>
+                                    class="submenu-item {{ request()->is('/out*') ? 'active' : '' }}">
+                                    <a href={{ url('/out') }}>Sold Products</a>
                                 </li>
                             </ul>
                         </li>

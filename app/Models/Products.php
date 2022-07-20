@@ -12,11 +12,14 @@ class Products extends Model
     protected $table = 'products';
     
     protected $fillable= [
-
+        'suppliers',
         'barang',
-        'qty',
-        'price',
+        'qty_m',
+        'qty_k',
+        'masuk',
+        'keluar',
         'jenis',
+        'status',
     ];
 
 }

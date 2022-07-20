@@ -23,11 +23,11 @@
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">qty</label>
-                            <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="qty" name="qty" autocomplete="off">
+                            <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="qty" name="qty_m" autocomplete="off">
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Harga</label>
-                            <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Products" name="in" autocomplete="off">
+                            <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Products" name="masuk" autocomplete="off">
                         </div>
                           
                     </div>
@@ -94,9 +94,9 @@
                                 <td>{{ $d->created_at }}</td>
                                 <td>{{ $d->suppliers }}</td>
                                 <td>{{ $d->barang }}</td>
-                                <td>{{ $d->qty }}</td>
-                                <td>{{$d->in}}</td>
-                                <td>Rp. @money((float)$d->in*$d->qty)</td>
+                                <td>{{ $d->qty_m }}</td>
+                                <td>Rp. @money((float)$d->masuk)</td>
+                                <td>Rp. @money((float)$d->masuk*$d->qty_m)</td>
                                 <td>
                                     <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#editIn{{ $d->id }}">Edit</i></a>
