@@ -32,7 +32,7 @@
     @endforeach
 
     <section class="section">
-        <h1>Pemasukan</h1>
+        <h1>Produk Terjual</h1>
         <div class="card card-info ">
 
             <div class="card-body">
