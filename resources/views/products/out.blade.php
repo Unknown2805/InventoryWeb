@@ -43,9 +43,9 @@
                             <th>Tanggal</th>
                             <th>Suppliers</th>
                             <th>Barang</th>
-                            <th>Quantity</th>
-                            <th>Harga</th>
-                            <th>Total Harga</th>
+                            <th>Terjual</th>
+                            <th>Pendapatan</th>
+                            <th>Total Pendapatan</th>
                         </tr>
                     </thead>
                     <tbody>

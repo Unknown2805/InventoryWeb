@@ -5,7 +5,7 @@
 
 
 <section class="section">
-    <h1>Gudang</h1>
+    <h1>Transaksi</h1>
         <div class="card card-info ">
 
             <div class="card-body">
@@ -15,17 +15,19 @@
                         <tr>
                             <th>No</th>
                             <th>barang</th>
-                            <th>harga awal</th>
-                            <th>harga jual</th>
-                            <th>tersisa</th>
+                            <th>Harga Awal</th>
+                            <th>Harga Jual</th>
+                            <th>Tersisa</th>
                         
                         </tr>
                     </thead>
+                
                     @php
                         $serial = 1;
                     @endphp
-
+         
                 @foreach ($sale as $s)
+
                 <tr>
                     <td>{{ $serial++ }}</td>
                     <td>{{ $s->barang }}</td>
@@ -39,7 +41,7 @@
                     </td>
                 </tr>   
                 @endforeach
-
+       
                 </table>
             </div>
         </div>

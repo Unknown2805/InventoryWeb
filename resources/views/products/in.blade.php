@@ -14,20 +14,20 @@
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="formGroupExampleInput" class="form-label">Suppliers</label>
+                            <label for="formGroupExampleInput" class="form-label">Supplier</label>
                             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Uraian" name="suppliers">
                         </div>
                         <div class="mb-3">
-                            <label for="formGroupExampleInput2" class="form-label">Products</label>
+                            <label for="formGroupExampleInput2" class="form-label"> Nama Produk</label>
                             <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Products" name="barang" autocomplete="off">
                         </div>
                         <div class="mb-3">
-                            <label for="formGroupExampleInput2" class="form-label">qty</label>
-                            <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="qty" name="qty_m" autocomplete="off">
+                            <label for="formGroupExampleInput2" class="form-label">Stock</label>
+                            <input type="number" class="form-control" id="formGroupExampleInput2" min="1" placeholder="qty" name="qty_m" autocomplete="off">
                         </div>
                         <div class="mb-3">
-                            <label for="formGroupExampleInput2" class="form-label">Harga</label>
-                            <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Products" name="masuk" autocomplete="off">
+                            <label for="formGroupExampleInput2" class="form-label">Harga Awal</label>
+                            <input type="number" class="form-control" id="formGroupExampleInput2" min="1" placeholder="Products" name="masuk" autocomplete="off">
                         </div>
                           
                     </div>
@@ -72,7 +72,7 @@
 
             <div class="card-body">
                 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Tambah Data
+                    Add +
                 </button>
                 <table class="table table-striped" id="table1">
                     <thead>
@@ -81,9 +81,9 @@
                             <th>Tanggal</th>
                             <th>Suppliers</th>
                             <th>Barang</th>
-                            <th>Quantity</th>
-                            <th>Harga</th>
-                            <th>Total Harga</th>
+                            <th>Stock</th>
+                            <th>Harga Awal</th>
+                            <th>Total Modal</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>

@@ -19,7 +19,10 @@ class ProductsController extends Controller
     public function in(){
         $in = Products::where('jenis','masuk')->get();
 
+
+
         return view('products.in',compact('in'));
+
 
     }
 
