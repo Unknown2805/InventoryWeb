@@ -38,6 +38,9 @@ Route::get('/sale', [ProductsController::class, 'sale']);
 Route::put('/editOut/{id}', [ProductsController::class, 'editOut']);
 //out
 Route::get('/out', [ProductsController::class, 'out']);
+//trash
+Route::get('/trash', [ProductsController::class, 'trash']);
+Route::put('/editTrash/{id}', [ProductsController::class, 'editTrash']);
 
 Route::delete('/deleteIn/delete/{id}', [ProductsController::class, 'destroy']);
 

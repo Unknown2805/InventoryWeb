@@ -91,7 +91,13 @@
                         </li>
 
 
-                        {{-- Kas Masjid --}}
+                        <li class="sidebar-item  ">
+                            <a href="{{ url('/trash') }}" class='sidebar-link'>
+                                <i class="bi bi-trash-fill"></i>
+                                <span>Trash</span>
+                            </a>
+                        </li>
+
                         <li class="sidebar-item  ">
                             <a href="{{ url('/rekap') }}" class='sidebar-link'>
                                 <i class="bi bi-calendar-event-fill"></i>

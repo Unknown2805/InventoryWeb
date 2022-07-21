@@ -24,7 +24,6 @@ class CreateProductsTable extends Migration
             $table->integer('keluar')->nullable();
             $table->integer('rusak')->nullable();
             $table->string('jenis');
-            $table->string('status');
             $table->timestamps();
         });
     }
