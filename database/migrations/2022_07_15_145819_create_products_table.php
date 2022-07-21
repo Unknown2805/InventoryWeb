@@ -19,8 +19,10 @@ class CreateProductsTable extends Migration
             $table->string('barang');
             $table->integer('qty_m')->nullable();
             $table->integer('qty_k')->nullable();
+            $table->integer('qty_r')->nullable();            
             $table->integer('masuk')->nullable();
             $table->integer('keluar')->nullable();
+            $table->integer('rusak')->nullable();
             $table->string('jenis');
             $table->string('status');
             $table->timestamps();

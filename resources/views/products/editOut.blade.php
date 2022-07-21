@@ -13,10 +13,6 @@
                 <div class="modal-body">
 
                     <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">Products</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Products" name="barang" autocomplete="off" value="{{$d->barang}}">
-                    </div>
-                    <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Jumlah</label>
                         <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="qty" name="qty_k" autocomplete="off" value="{{$d->qty_k}}"> 
                     </div>

@@ -18,6 +18,7 @@
                             <th>Harga Awal</th>
                             <th>Harga Jual</th>
                             <th>Tersisa</th>
+                            <th>Aksi</th>
                         
                         </tr>
                     </thead>
@@ -35,7 +36,7 @@
                     <td>{{ $s->keluar}}</td>
                     <td>{{ $s->qty_m}}</td>
                     <td>
-                        <a class="btn shadow btn-outline-warning btn-sm" data-bs-toggle="modal"
+                        <a class="btn btn-outline-warning btn-sm" data-bs-toggle="modal"
                                                         data-bs-target="#editOut{{ $s->id }}">Jual</i></a>
                         
                     </td>

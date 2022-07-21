@@ -108,14 +108,13 @@ class ProductsController extends Controller
 
         $request->validate([
             
-            'barang' => 'required',
+            
             'keluar' => 'required',
             'qty_k' => 'required',
         ]);
         // dd($request);
         
        
-        $out->barang = $request->barang;
         $out->keluar = $request->keluar;
         $out->qty_m = $out->qty_m - $request->qty_k;
         $out->qty_k = $out->qty_k + $request->qty_k;

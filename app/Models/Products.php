@@ -16,10 +16,11 @@ class Products extends Model
         'barang',
         'qty_m',
         'qty_k',
+        'qty_r',
         'masuk',
         'keluar',
+        'rusak',
         'jenis',
-        'status',
     ];
 
 }
