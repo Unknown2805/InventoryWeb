@@ -12,8 +12,7 @@
 		}
 	</style>
 	<center>
-		<h5>Data Rekap Barang</h4>
-		<h6><a target="_blank" href="https://www.instagram.com/nilaur.main/">Important Item</a></h5>
+		<h5>Data Rekap Barang Masuk</h4>
 	</center>
  
     <table class="table table-striped" id="table1">
@@ -23,21 +22,21 @@
                 <th>Tanggal</th>
                 <th>Suppliers</th>
                 <th>Barang</th>
-                <th>Terjual</th>
-                <th>Pendapatan</th>
-                <th>Total Pendapatan</th>
+                <th>Stock</th>
+                <th>Harga Awal</th>
+                <th>Total</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($sold as $d)
+            @foreach ($in as $d)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $d->created_at }}</td>
                     <td>{{ $d->suppliers }}</td>
                     <td>{{ $d->barang }}</td>
-                    <td>{{ $d->qty_k }}</td>
-                    <td>Rp. @money((float)$d->keluar)</td>
-                    <td>Rp. @money((float)$d->keluar*$d->qty_k)</td>
+                    <td>{{ $d->qty_m }}</td>
+                    <td>Rp. @money((float)$d->masuk)</td>
+                    <td>Rp. @money((float)$d->masuk*$d->qty_m)</td>
                 </tr>
             @endforeach
 

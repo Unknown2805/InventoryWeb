@@ -91,7 +91,7 @@
                         </li>
 
 
-                        <li class="sidebar-item {{ request()->is('trash*') ? 'active' : '' }}">
+                        <li class="sidebar-item">
                             <a href="{{ url('/trash') }}" class='sidebar-link'>
                                 <i class="bi bi-trash-fill"></i>
                                 <span>Trash</span>
@@ -99,7 +99,7 @@
                         </li>
 
                         <li class="sidebar-item  ">
-                            <a href="{{ url('/rekap') }}" class='sidebar-link'>
+                            <a href="{{ url('/report') }}" class='sidebar-link'>
                                 <i class="bi bi-calendar-event-fill"></i>
                                 <span>Report</span>
                             </a>

@@ -21,11 +21,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">qty</label>
-                        <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="qty" name="qty_m" autocomplete="off" value="{{$d->qty_m}}"> 
+                        <input type="number" class="form-control" id="formGroupExampleInput2" min="1" placeholder="qty" name="qty_m" autocomplete="off" value="{{$d->qty_m}}"> 
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Harga</label>
-                        <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Products" name="masuk" autocomplete="off" value="{{$d->masuk}}">
+                        <input type="number" class="form-control" id="formGroupExampleInput2" min="1" placeholder="Products" name="masuk" autocomplete="off" value="{{$d->masuk}}">
                     </div>
                       
                 </div>

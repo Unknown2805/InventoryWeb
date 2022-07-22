@@ -41,13 +41,6 @@
                                 <label for="floatingPassword">Password</label>
                             </div>
                         </div>
-                        <div class="col-md-12 mb-4">
-                            <div class="form-floating">
-                                <input required type="file" class="form-control mt-3 "
-                                    placeholder="Profile" name="gambar">
-                                <label for="floatingPassword">Image Profile</label>
-                            </div>
-                        </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary btn_add mt-3">Submit</button>
                         </div>
@@ -114,7 +107,7 @@
                         @foreach ($user as $u)
                         <tr>
                             <td>{{ $serial++ }}</td>
-                            <td> <img src="{{ Auth::user()->gambar == null ? asset('assets/images/faces/1.jpg') : asset('/storage/profile/'. $u->gambar) }}" alt="". width="100" height="100"></td>         
+                            <td> <img src="{{ Auth::user()->gambar == null || $u->gambar == null ? asset('assets/images/faces/1.jpg') : asset('/storage/profile/'. $u->gambar) }}" alt="". width="100" height="100"></td>         
                             <td>{{ $u->name }}</td>
                             <td>{{ $u->email }}</td>
                             <td>{{ $u->roles->pluck('name')->implode('') }}</td>

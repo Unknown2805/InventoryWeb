@@ -22,7 +22,6 @@ class CreateProductsTable extends Migration
             $table->integer('qty_r')->nullable();            
             $table->integer('masuk')->nullable();
             $table->integer('keluar')->nullable();
-            $table->integer('rusak')->nullable();
             $table->string('jenis');
             $table->timestamps();
         });

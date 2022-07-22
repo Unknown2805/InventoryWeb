@@ -22,12 +22,8 @@
                     <div class="modal-body">
     
                         <div class="mb-3">
-                            <label for="formGroupExampleInput2" class="form-label">Jumlah</label>
+                            <label for="formGroupExampleInput2" class="form-label">Jumlah Barang Rusak</label>
                             <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="qty" name="qty_r" autocomplete="off" > 
-                        </div>
-                        <div class="mb-3">
-                            <label for="formGroupExampleInput2" class="form-label">Harga Jual</label>
-                            <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Products" name="rusak" autocomplete="off"value="{{ $d->harga }}" >
                         </div>
                           
                     </div>
@@ -79,9 +75,7 @@
                             <th>Tanggal</th>
                             <th>Suppliers</th>
                             <th>Barang</th>
-                            <th>Jumlah</th>
-                            <th>Harga</th>
-                            <th>Total Harga</th>
+                            <th>Rusak</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -93,15 +87,7 @@
                                 <td>{{ $d->suppliers }}</td>
                                 <td>{{ $d->barang }}</td>
                                 <td>{{ $d->qty_r }}</td>
-                                @if($d->rusak == null)
-                                <td>{{ $d->rusak }}</td>
-                                <td>{{ $d->rusak}}</td>
-                                @else
-                                <td>Rp. @money((float)$d->rusak)</td>
-                                <td>Rp. @money((float)$d->rusak*$d->qty_r)</td>
-                                
-                                @endif
-                                @if($d->rusak == null)
+                                @if($d->qty_r == null)
                                 <td>
                                     <a class="btn shadow btn-outline-primary btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#editTrash{{ $d->id }}">add</i></a>

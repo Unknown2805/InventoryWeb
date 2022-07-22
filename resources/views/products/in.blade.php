@@ -71,9 +71,12 @@
         <div class="card card-info ">
 
             <div class="card-body">
+
                 <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Add +
                 </button>
+                <a href="/masuk/barang" class="btn btn-danger mb-3">CETAK PDF</a>
+
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>
@@ -83,7 +86,7 @@
                             <th>Barang</th>
                             <th>Stock</th>
                             <th>Harga Awal</th>
-                            <th>Total Modal</th>
+                            <th>Total</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>

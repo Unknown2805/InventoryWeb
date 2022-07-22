@@ -14,11 +14,11 @@
 
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Jumlah</label>
-                        <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="qty" name="qty_k" autocomplete="off" value="{{$d->qty_k}}"> 
+                        <input type="number" class="form-control" id="formGroupExampleInput2" min="1" placeholder="qty" name="qty_k" autocomplete="off" value="{{$d->qty_k}}"> 
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Harga Jual</label>
-                        <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Products" name="keluar" autocomplete="off" value="{{$d->keluar}}">
+                        <input type="number" class="form-control" id="formGroupExampleInput2" min="1" placeholder="Products" name="keluar" autocomplete="off" value="{{$d->keluar}}">
                     </div>
                       
                 </div>

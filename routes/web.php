@@ -39,7 +39,10 @@ Route::put('/editOut/{id}', [ProductsController::class, 'editOut']);
 //out
 Route::get('/out', [ProductsController::class, 'out']);
 
-Route::get('/keluar/barang', [ProductsController::class, 'cetak_pdf']);
+Route::get('/masuk/barang', [ProductsController::class, 'cetak_in_pdf']);
+Route::get('/keluar/barang', [ProductsController::class, 'cetak_out_pdf']);
+Route::get('/report/barang', [ProductsController::class, 'cetak_report_pdf']);
+
 //trash
 Route::get('/trash', [ProductsController::class, 'trash']);
 Route::put('/editTrash/{id}', [ProductsController::class, 'editTrash']);
@@ -49,7 +52,7 @@ Route::delete('/deleteIn/delete/{id}', [ProductsController::class, 'destroy']);
 
 
 //rekap
-Route::get('/all', [ProductsInController::class, 'rekap']);
+Route::get('/report', [ProductsController::class, 'report']);
 
 //owner
 Route::get('/owner', [OwnerController::class, 'index'])->name('owner.index');
