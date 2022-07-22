@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Products;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 use Illuminate\Http\Request;
 
@@ -66,6 +67,14 @@ class ProductsController extends Controller
         return view('products.out',compact('sold'));
 
     }
+
+    public function cetak_pdf(){
+        $sold= Products::all();
+
+        $pdf = PDF::loadview('products.rekap_pdf',['sold'=>$sold]);
+        return $pdf->download('laporan-rekap-barang.pdf');
+    }
+
     public function editOut(Request $request,$id) {
         $out = Products::where('id',$id)->firstOrFail();
 

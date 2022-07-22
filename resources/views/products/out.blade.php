@@ -36,6 +36,7 @@
         <div class="card card-info ">
 
             <div class="card-body">
+                <a href="/keluar/barang" class="btn btn-danger">CETAK PDF</a>
                 <table class="table table-striped" id="table1">
                     <thead>
                         <tr>

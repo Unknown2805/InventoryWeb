@@ -38,6 +38,8 @@ Route::get('/sale', [ProductsController::class, 'sale']);
 Route::put('/editOut/{id}', [ProductsController::class, 'editOut']);
 //out
 Route::get('/out', [ProductsController::class, 'out']);
+
+Route::get('/keluar/barang', [ProductsController::class, 'cetak_pdf']);
 //trash
 Route::get('/trash', [ProductsController::class, 'trash']);
 Route::put('/editTrash/{id}', [ProductsController::class, 'editTrash']);
