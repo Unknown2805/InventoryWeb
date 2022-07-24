@@ -22,8 +22,12 @@
                             <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Products" name="barang" autocomplete="off">
                         </div>
                         <div class="mb-3">
+                            <label for="formGroupExampleInput2" class="form-label">transport</label>
+                            <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Biaya pengiriman" name="transport" autocomplete="off">
+                        </div>
+                        <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Stock</label>
-                            <input type="number" class="form-control" id="formGroupExampleInput2" min="1" placeholder="qty" name="qty_m" autocomplete="off">
+                            <input type="number" class="form-control" id="formGroupExampleInput2" min="1" placeholder="Jumlah" name="qty_m" autocomplete="off">
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Harga Awal</label>
@@ -71,11 +75,16 @@
         <div class="card card-info ">
 
             <div class="card-body">
-
-                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Add +
-                </button>
-                <a href="/masuk/barang" class="btn btn-danger mb-3">CETAK PDF</a>
+            
+            @if(!isset($in[0]->suppliers))
+            
+            @else
+            <a href="/masuk/barang" class="btn btn-danger mb-3">CETAK PDF</a>
+            
+            @endif
+            <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add +
+            </button>
 
                 <table class="table table-striped" id="table1">
                     <thead>
@@ -84,6 +93,7 @@
                             <th>Tanggal</th>
                             <th>Suppliers</th>
                             <th>Barang</th>
+                            <th>Transport</th>
                             <th>Stock</th>
                             <th>Harga Awal</th>
                             <th>Total</th>
@@ -97,9 +107,14 @@
                                 <td>{{ $d->created_at }}</td>
                                 <td>{{ $d->suppliers }}</td>
                                 <td>{{ $d->barang }}</td>
-                                <td>{{ $d->qty_m }}</td>
+                                <td>{{ $d->transport}}</td>
+                                <td>{{ $d->qty_m == null ? "habis"  : $d->qty_m  }}</td>
                                 <td>Rp. @money((float)$d->masuk)</td>
+                                @if($d->qty_m == null)
+                                <td></td>
+                                @else
                                 <td>Rp. @money((float)$d->masuk*$d->qty_m)</td>
+                                @endif
                                 <td>
                                     <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#editIn{{ $d->id }}">Edit</i></a>

@@ -22,9 +22,11 @@
                 <th>Tanggal</th>
                 <th>Suppliers</th>
                 <th>Barang</th>
+                <th>Transport</th>
                 <th>Stock</th>
                 <th>Harga Awal</th>
                 <th>Total</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -34,9 +36,19 @@
                     <td>{{ $d->created_at }}</td>
                     <td>{{ $d->suppliers }}</td>
                     <td>{{ $d->barang }}</td>
-                    <td>{{ $d->qty_m }}</td>
+                    <td>{{ $d->transport}}</td>
+                    <td>{{ $d->qty_m == null ? "habis"  : $d->qty_m  }}</td>
                     <td>Rp. @money((float)$d->masuk)</td>
+                    @if($d->qty_m == null)
+                    <td></td>
+                    @else
                     <td>Rp. @money((float)$d->masuk*$d->qty_m)</td>
+                    @endif
+                    <td>
+                        <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
+                            data-bs-target="#editIn{{ $d->id }}">Edit</i></a>
+                        <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete{{ $d->id }}">delete</i></a>
+                    </td>
                 </tr>
             @endforeach
 

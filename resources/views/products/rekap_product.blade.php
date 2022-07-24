@@ -6,7 +6,7 @@
     
 
 
-    @foreach ($sold as $d)
+    @foreach ($data as $d)
         <div class="modal fade" id="delete{{ $d->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -32,14 +32,13 @@
     @endforeach
 
     <section class="section">
-        <h1>Produk Terjual</h1>
+        <h1>Rekap Product</h1>
         <div class="card card-info ">
 
             <div class="card-body">
-
-                @if(!isset($sold[0]->qty_k))
+                @if(!isset($data[0]->keluar))
                 @else
-                <a href="/keluar/barang" class="btn btn-danger ">CETAK PDF</a>
+                <a href="/report/barang" class="btn btn-danger ">CETAK PDF</a>
                 @endif
                 <table class="table table-striped" id="table1">
                     <thead>
@@ -48,24 +47,28 @@
                             <th>Tanggal</th>
                             <th>Suppliers</th>
                             <th>Barang</th>
-                            <th>Terjual</th>
-                            <th>Pendapatan</th>
-                            <th>Total</th>
+                            <th>Jumlah masuk</th>
+                            <th>Stock</th>
+                            <th>Harga jual</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($sold as $d)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>{{ $d->created_at }}</td>
-                                <td>{{ $d->suppliers }}</td>
+                        @foreach ($data as $d)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $d->created_at }}</td>
+                            <td>{{ $d->suppliers }}</td>
                                 <td>{{ $d->barang }}</td>
-                                <td>{{ $d->qty_k }}</td>
-                                <td>Rp. @money((float)$d->keluar)</td>
-                                <td>Rp. @money((float)$d->keluar*$d->qty_k)</td>
+                                <td>{{ $d->qty_m + $d->qty_k}}</td>
+                                <td>{{ $d->qty_m ? $d->qty_m : $d->qty_m = "0"}}</td>
+                                <td>{{ $d->keluar}}</td>
+                                
+                             
+            
                             </tr>
                         @endforeach
-
+            
                     </tbody>
                 </table>
             </div>

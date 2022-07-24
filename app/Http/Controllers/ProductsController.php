@@ -24,6 +24,7 @@ class ProductsController extends Controller
         $this->validate($request,[
             'suppliers' => 'required',
             'barang' => 'required',
+            'transport' => 'required',
             'masuk' => 'required',
             'qty_m' => 'required',
             
@@ -33,6 +34,7 @@ class ProductsController extends Controller
         $in = new Products();
         $in-> suppliers = $request-> suppliers;
         $in-> barang = $request-> barang;
+        $in-> transport = $request->transport;
         $in-> masuk = $request-> masuk;
         $in-> qty_m = $request-> qty_m;        
         $in-> jenis = 'masuk';
@@ -77,31 +79,47 @@ class ProductsController extends Controller
         $pdf = PDF::loadview('pdf.rekap_out_pdf',['sold'=>$sold]);
         return $pdf->download('laporan-rekap-barang.pdf');
     }
-    public function editOut(Request $request,$id) {
+    public function addOut(Request $request,$id) {
         $out = Products::where('id',$id)->firstOrFail();
 
         $request->validate([
             
             
             'keluar' => 'required',
-            'qty_k' => 'required',
         ]);
         // dd($request);
         
        
         $out->keluar = $request->keluar;
+
+        // dd($data);
+        
+            $out->update();
+            return redirect()->back();
+        
+    }
+    public function editOut(Request $request,$id) {
+        $out = Products::where('id',$id)->firstOrFail();
+
+        $request->validate([
+            
+            
+            'qty_k' => 'required',
+        ]);
+        // dd($request);
+        
+       
         $out->qty_m = $out->qty_m - $request->qty_k;
         $out->qty_k = $out->qty_k + $request->qty_k;
 
         // dd($data);
-        if($request->qty_k <= $out->qty_m ){
+        
+
             $out->update();
             return redirect()->back();
-        }elseif($request->qty_k >= $out->qty_m || $request->qty_k <= 0){
-
-        return redirect()->back();
-        }
+        
     }
+    
 
 //sale
     public function sale(){
@@ -132,9 +150,14 @@ class ProductsController extends Controller
         ]);
         // dd($request);
         
-        
-        $trash->qty_m = $trash->qty_m - $request->qty_r;
-        $trash->qty_r = $trash->qty_r + $request->qty_r;
+        if($request->qty_r == 0){
+            $trash->qty_m = $trash->qty_m + $trash->qty_r;
+            $trash->qty_r = 0;
+
+        }elseif($request->qty_r >= 1){
+        $trash->qty_m = ($trash->qty_m + $trash->qty_r) - $request->qty_r;
+        $trash->qty_r = $request->qty_r;
+        }
         
         // dd($data);
         $trash->update();
@@ -143,10 +166,15 @@ class ProductsController extends Controller
     }
     
 //rekap
-    public function report(){
+    public function reportProduct(){
         $data = Products::all();
 
-        return view('products.rekap',compact('data'));
+        return view('products.rekap_product',compact('data'));
+    }
+    public function reportPenjualan(){
+        $data = Products::all();
+
+        return view('products.rekap_penjualan',compact('data'));
     }
     public function cetak_report_pdf(){
         $data= Products::all();
@@ -155,7 +183,8 @@ class ProductsController extends Controller
         return $pdf->download('laporan-rekap-barang.pdf');
     }
 
-//dashboard
+
+
 
 //delete
     public function destroy($id){

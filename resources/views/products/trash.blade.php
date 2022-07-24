@@ -23,7 +23,7 @@
     
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Jumlah Barang Rusak</label>
-                            <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="qty" name="qty_r" autocomplete="off" > 
+                            <input type="number" class="form-control" id="formGroupExampleInput2" min="0" max="{{$d->qty_m}}" placeholder="qty" name="qty_r" autocomplete="off" > 
                         </div>
                           
                     </div>
@@ -89,8 +89,8 @@
                                 <td>{{ $d->qty_r }}</td>
                                 @if($d->qty_r == null)
                                 <td>
-                                    <a class="btn shadow btn-outline-primary btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#editTrash{{ $d->id }}">add</i></a>
+                                    <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#editTrash{{ $d->id }}">trash</i></a>
                                 </td>
                                 @else
                                 <td>

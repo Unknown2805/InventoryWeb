@@ -34,12 +34,21 @@
                     <td>{{ $s->barang }}</td>
                     <td>{{ $s->masuk }}</td>
                     <td>{{ $s->keluar}}</td>
-                    <td>{{ $s->qty_m}}</td>
+                    <td>{{ $s->qty_m == null ? "habis"  : $s->qty_m  }}</td>
+                    @if($s->keluar == null)
+                    <td>
+                        <a class="btn btn-outline-primary btn-sm" data-bs-toggle="modal"
+                                                        data-bs-target="#addOut{{ $s->id }}">Add +</i></a>
+                        
+                    </td>
+                    @else
                     <td>
                         <a class="btn btn-outline-warning btn-sm" data-bs-toggle="modal"
                                                         data-bs-target="#editOut{{ $s->id }}">Jual</i></a>
                         
                     </td>
+                    @endif
+
                 </tr>   
                 @endforeach
        

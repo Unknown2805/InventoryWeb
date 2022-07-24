@@ -4,66 +4,62 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Profile;
+use App\Models\Products;
 use App\Models\User;
+use Carbon\Carbon;
 
 
 class DashboardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+//dashboard
     public function dashboard()
     {
         $owner = User::orderBy('name', 'ASC')->role('owner')->get();
-        $manager = User::orderBy('name', 'ASC')->role('manager')->get(); 
+        $manager = User::orderBy('name', 'ASC')->role('manager')->get();
+        $data = Products::all();
+        $pro = Products::orderBy('qty_k','DESC')->limit('10')->get();
+
+
+
         
-        return view('dashboard', compact('owner','manager'));
+
+        $this_year = Carbon::now()->format('Y');
+        $month_p = Products::where('created_at','like', $this_year.'%')->get();
+
+        for ($i=1; $i <= 12; $i++){
+            $data_month_un_p[(int)$i]=0;
+            $data_month_rug_p[(int)$i]=0;    
+        }
+
+        foreach ($month_p as $a) {
+            $bulan_in_p= explode('-',carbon::parse($a->created_at)->format('Y-m-d'))[1];
+            
+                $data_month_un_p[(int) $bulan_in_p]+= ($a->keluar - $a->masuk)*$a->qty_k - $a->transport - ($a->qty_r*$a->masuk); 
+                $data_month_rug_p[(int) $bulan_in_p]+= $a->masuk*$a->qty_r;
+        
+
+       
+        }
+
+        $ip = $data->sum('masuk');
+        $op = $data->sum('keluar');
+        $u = $data->sum('keluar - masuk');
+
+        // dd($data);
+        return view('dashboard', compact('owner','manager','data','pro'),
+    
+    )
+    -> with('data_month_un_p', $data_month_un_p)
+    -> with('data_month_rug_p', $data_month_rug_p);
     }
 
+//Auth Login
     public function __construct()
     {
         $this->middleware('auth');
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+//Edit User
     public function EditOwner(Request $request,$id){
         $data = User::where('id',$id)->orderBy('name', 'ASC')->role('owner')->firstOrFail();
 
@@ -88,7 +84,6 @@ class DashboardController extends Controller
 
         return redirect()->back();
     }
-
     public function EditManager(Request $request,$id){
         $data = User::where('id',$id)->orderBy('name', 'ASC')->role('manager')->firstOrFail();
 
@@ -112,30 +107,5 @@ class DashboardController extends Controller
         $data->update();
 
         return redirect()->back();
-    }
-
-
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

@@ -20,6 +20,7 @@
             <tr>
                 <th>No</th>
                 <th>Tanggal</th>
+                <th>Suppliers</th>
                 <th>Barang</th>
                 <th>Terjual</th>
                 <th>Pendapatan</th>
@@ -31,6 +32,7 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $d->created_at }}</td>
+                    <td>{{ $d->suppliers }}</td>
                     <td>{{ $d->barang }}</td>
                     <td>{{ $d->qty_k }}</td>
                     <td>Rp. @money((float)$d->keluar)</td>
@@ -40,7 +42,6 @@
 
         </tbody>
     </table>
- 
 </body>
 </html>
 

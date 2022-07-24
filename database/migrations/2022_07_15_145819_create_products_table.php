@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->integer('qty_r')->nullable();            
             $table->integer('masuk')->nullable();
             $table->integer('keluar')->nullable();
+            $table->integer('transport')->nullable();
             $table->string('jenis');
             $table->timestamps();
         });

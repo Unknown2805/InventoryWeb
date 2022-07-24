@@ -35,6 +35,8 @@ Route::post('/store-in', [ProductsController::class, 'StoreIn']);
 Route::put('/editIn/{id}', [ProductsController::class, 'editIn']);
 //sale
 Route::get('/sale', [ProductsController::class, 'sale']);
+Route::put('/addOut/{id}', [ProductsController::class, 'addOut']);
+
 Route::put('/editOut/{id}', [ProductsController::class, 'editOut']);
 //out
 Route::get('/out', [ProductsController::class, 'out']);
@@ -52,7 +54,9 @@ Route::delete('/deleteIn/delete/{id}', [ProductsController::class, 'destroy']);
 
 
 //rekap
-Route::get('/report', [ProductsController::class, 'report']);
+Route::get('/reportProduct', [ProductsController::class, 'reportProduct']);
+Route::get('/reportPenjualan', [ProductsController::class, 'reportPenjualan']);
+
 
 //owner
 Route::get('/owner', [OwnerController::class, 'index'])->name('owner.index');

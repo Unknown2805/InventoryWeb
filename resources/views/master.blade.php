@@ -98,12 +98,21 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item  ">
-                            <a href="{{ url('/report') }}" class='sidebar-link'>
-                                <i class="bi bi-calendar-event-fill"></i>
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-bell-fill"></i>
                                 <span>Report</span>
                             </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item {{ request()->is('reportProduct*') ? 'active' : '' }}">
+                                    <a href={{ url('reportProduct') }}>Report Product</a>
+                                </li>
+                                <li class="submenu-item {{ request()->is('reportPenjualan*') ? 'active' : '' }}">
+                                    <a href={{ url('reportPenjualan') }}>Report Penjualan</a>
+                                </li>
+                            </ul>
                         </li>
+                        
 
 
                         <li class="sidebar-title">Settings</li>

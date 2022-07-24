@@ -19,6 +19,7 @@ class Products extends Model
         'qty_r',
         'masuk',
         'keluar',
+        'transport',
         'jenis',
     ];
 
