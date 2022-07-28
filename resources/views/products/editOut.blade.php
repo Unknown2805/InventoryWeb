@@ -44,8 +44,8 @@
                 <div class="modal-body">
 
                     <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">Jumlah</label>
-                        <input type="number" class="form-control" id="formGroupExampleInput2" min="1" max="{{$d->qty_m}}" placeholder="qty" name="qty_k" autocomplete="off" value="{{$d->qty_k}}"> 
+                        <label for="formGroupExampleInput2" class="form-label">Jumlah Barang</label>
+                        <input type="number" class="form-control" id="formGroupExampleInput2" min="1" max="{{$d->qty_m}}" placeholder="Jumlah" name="qty_k" autocomplete="off" value="{{$d->qty_k}}"> 
                     </div>
                       
                 </div>

@@ -26,7 +26,7 @@
                 <th>Stock</th>
                 <th>Harga Awal</th>
                 <th>Total</th>
-                <th>Aksi</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -44,11 +44,7 @@
                     @else
                     <td>Rp. @money((float)$d->masuk*$d->qty_m)</td>
                     @endif
-                    <td>
-                        <a class="btn shadow btn-outline-success btn-sm" data-bs-toggle="modal"
-                            data-bs-target="#editIn{{ $d->id }}">Edit</i></a>
-                        <a class="btn shadow btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete{{ $d->id }}">delete</i></a>
-                    </td>
+                    
                 </tr>
             @endforeach
 

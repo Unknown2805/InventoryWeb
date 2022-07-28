@@ -23,7 +23,7 @@
     
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Jumlah Barang Rusak</label>
-                            <input type="number" class="form-control" id="formGroupExampleInput2" min="0" max="{{$d->qty_m}}" placeholder="qty" name="qty_r" autocomplete="off" > 
+                            <input type="number" class="form-control" id="formGroupExampleInput2" min="0" max="{{$d->qty_m}}" placeholder="Jumlah" name="qty_r" autocomplete="off" > 
                         </div>
                           
                     </div>
