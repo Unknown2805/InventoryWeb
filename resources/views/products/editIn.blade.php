@@ -13,7 +13,7 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="formGroupExampleInput" class="form-label">Suppliers</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Uraian" name="suppliers" value="{{$d->suppliers}}">
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Uraian" name="suppliers" value="{{$d->suppliers}}" autocomplete="off">
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Products</label>

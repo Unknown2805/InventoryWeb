@@ -42,8 +42,6 @@ class ProductsController extends Controller
             $in-> save();
             return redirect()->back();
 
-
-        
     }
     public function editIn(Request $request,$id) {
         $in = Products::where('id',$id)->firstOrFail();

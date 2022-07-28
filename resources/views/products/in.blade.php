@@ -15,7 +15,7 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="formGroupExampleInput" class="form-label">Supplier</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Uraian" name="suppliers">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Uraian" name="suppliers" autocomplete="off">
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label"> Nama Produk</label>
