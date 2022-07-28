@@ -72,7 +72,7 @@
 
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
-                                <i class="bi bi-bell-fill"></i>
+                                <i class="bi bi-cart-fill"></i>
                                 <span>Data Products</span>
                             </a>
                             <ul class="submenu ">
@@ -100,7 +100,7 @@
 
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
-                                <i class="bi bi-bell-fill"></i>
+                                <i class="bi bi-clipboard-check-fill"></i>                                
                                 <span>Report</span>
                             </a>
                             <ul class="submenu ">
