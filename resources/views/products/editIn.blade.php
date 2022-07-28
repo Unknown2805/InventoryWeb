@@ -20,8 +20,8 @@
                         <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Products" name="barang" autocomplete="off" value="{{$d->barang}}">
                     </div>
                     <div class="mb-3">
-                        <label for="formGroupExampleInput2" class="form-label">qty</label>
-                        <input type="number" class="form-control" id="formGroupExampleInput2" min="1" placeholder="qty" name="qty_m" autocomplete="off" value="{{$d->qty_m}}"> 
+                        <label for="formGroupExampleInput2" class="form-label">Jumlah Barang</label>
+                        <input type="number" class="form-control" id="formGroupExampleInput2" min="1" placeholder="Jumlah" name="qty_m" autocomplete="off" value="{{$d->qty_m}}"> 
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Harga</label>
