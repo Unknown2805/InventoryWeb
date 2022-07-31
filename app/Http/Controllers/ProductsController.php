@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Products;
 use Barryvdh\DomPDF\Facade\Pdf;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -40,6 +40,7 @@ class ProductsController extends Controller
         $in-> masuk = $result;
         $in-> qty_m = $request-> qty_m;        
         $in-> jenis = 'masuk';
+        $in->created_at = Carbon::parse()->format("d-M-Y", strtotime('created_at'));
             // dd($in);
 
             $in-> save();
@@ -185,11 +186,23 @@ class ProductsController extends Controller
 
         return view('products.rekap_penjualan',compact('data'));
     }
+
     public function cetak_report_pdf(){
         $data= Products::all();
 
         $pdf = PDF::loadview('pdf.rekap_report_pdf',['data'=>$data]);
         return $pdf->download('laporan-rekap-barang.pdf');
+    }
+    public function cetak_periode_pdf(Request $request){
+         
+        $tgl1 = carbon::parse($request->tgl1)->format('Y-m-d H:i:s');
+        $tgl2 = carbon::parse($request->tgl2)->format('Y-m-d H:i:s');
+        $data= Products::whereBetween('created_at', [$tgl1, $tgl2])
+                ->get();
+
+        // dd($data);
+        $pdf = PDF::loadview('pdf.rekap_report_pdf',['data'=>$data]);
+        return $pdf->download('laporan-rekap-periode-barang.pdf');
     }
 
 

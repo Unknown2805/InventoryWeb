@@ -33,7 +33,7 @@ class DashboardController extends Controller
 
         foreach ($month_p as $a) {
             $bulan_in_p= explode('-',carbon::parse($a->created_at)->format('Y-m-d'))[1];
-            $untung = ($a->keluar - $a->masuk)*$a-->qty_k - $a->transport - ($a->qty_r*$a->masuk);
+            $untung = ($a->keluar - $a->masuk)*$a->qty_k - $a->transport - ($a->qty_r*$a->masuk);
             if($untung >= 0){
 
                 $data_month_un_p[(int) $bulan_in_p]+= $untung; 

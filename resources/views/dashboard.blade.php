@@ -163,44 +163,6 @@
 
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-   {{-- CHART Masjid --}}
-   <script>
-       const products = {
-           labels: [
-               'Jumlah',
-               'Jumlah'
-           ],
-           datasets: [{
-               label: '',
-               data: [],
-               backgroundColor: [
-                   '#435EBE' ,
-                   '#43beaf'
-               ],
-               hoverOffset: 4
-           }]
-       };
-
-       const productsd = {
-           type: 'doughnut',
-           data: products,
-           options: {
-               responsive: true,
-               plugins: {
-                   legend: {
-                       position: 'end',
-                   },
-               }
-           },
-       };
-
-       const chartproducts = new Chart(
-           document.getElementById('d_products'),
-           productsd
-       );
-   </script>
-
-   
 
    <script>
        const b_products = [

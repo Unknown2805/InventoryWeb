@@ -44,6 +44,9 @@ Route::get('/out', [ProductsController::class, 'out']);
 Route::get('/masuk/barang', [ProductsController::class, 'cetak_in_pdf']);
 Route::get('/keluar/barang', [ProductsController::class, 'cetak_out_pdf']);
 Route::get('/report/barang', [ProductsController::class, 'cetak_report_pdf']);
+Route::post('/report/periode/barang', [ProductsController::class, 'cetak_periode_pdf']);
+
+
 
 //trash
 Route::get('/trash', [ProductsController::class, 'trash']);
