@@ -147,6 +147,84 @@
                     </div>
                 </div>
             </div>
+        </div>
+        
+    </section>
+</div>
+
+
+
+
+   @include('formEditProfile')
+
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+   <script>
+       const b_products = [
+           'January',
+           'February',
+           'March',
+           'April',
+           'May',
+           'June',
+           'July',
+           'Aug',
+           'Sep',
+           'Oct',
+           'Nov',
+           'Dec'
+       ];
+
+       const b_productsd = {
+           labels: b_products,
+           datasets: [{
+               label: 'Keuntungan',
+               backgroundColor: '#43beaf',
+               borderRadius: 4,
+               barThickness: 10,
+               
+               data: [
+               @foreach ($data_month_un_p as $ikm )
+               {{ $ikm }},
+               @endforeach
+               ]
+           }, {
+               label: 'Kerugian',
+               backgroundColor: '#dc3545',
+               borderRadius: 4,
+               barThickness: 10,
+               data: [
+               @foreach ($data_month_rug_p as $okm)
+               {{ $okm }},
+               @endforeach
+               ],
+           }]
+       };
+
+       const bar_products = {
+           type: 'bar',
+           data: b_productsd,
+           options: {
+               responsive: true,
+               indexAxis: 'x',
+               plugins: {
+               legend: {
+                   position: 'bottom',
+                   labels: {
+         usePointStyle: true,
+       },
+               },},
+           }
+       };
+   </script>
+
+   <script>
+       const bulanan_products = new Chart(
+           document.getElementById('products_b'),
+           bar_products
+       );
+   </script>
 
         </section>
     </div>

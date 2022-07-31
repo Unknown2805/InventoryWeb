@@ -30,6 +30,7 @@
             </tr>
         </thead>
         <tbody>
+            
             @foreach ($data as $d)
             <tr>
                 <td>{{ $loop->iteration }}</td>
