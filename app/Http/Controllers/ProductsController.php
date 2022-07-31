@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use App\Models\Products;
 use Barryvdh\DomPDF\Facade\Pdf;
+use App\Exports\ProductsExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
@@ -63,6 +66,12 @@ class ProductsController extends Controller
         $in->update();
 
         return redirect()->back();
+    }
+
+//Excel 
+    public function export_excel()
+    {
+        return Excel::download(new ProductsExport, 'rekap.xlsx');
     }
 //out
     public function out(){

@@ -42,6 +42,7 @@
                 @if(!isset($data[0]->keluar))
                 @else
                 <a href="/report/barang" class="btn btn-danger ">CETAK PDF</a>
+                <a href="/excel/barang" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
                 @endif
                 <table class="table table-striped" id="table1">
                     <thead>
