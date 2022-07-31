@@ -1,6 +1,6 @@
 @foreach ($in as $d)
 
-<div class="modal fade" id="editIn{{$d ->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade {{$d ->id}}" id="editIn{{$d ->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -20,12 +20,16 @@
                         <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Products" name="barang" autocomplete="off" value="{{$d->barang}}">
                     </div>
                     <div class="mb-3">
+                        <label for="formGroupExampleInput2" class="form-label">transport</label>
+                        <input type="text" class="form-control" placeholder="Biaya pengiriman"  name="transport" autocomplete="off" value="Rp. @money((float)$d->transport)">
+                    </div>
+                    <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Jumlah Barang</label>
-                        <input type="number" class="form-control" id="formGroupExampleInput2" min="1" placeholder="Jumlah" name="qty_m" autocomplete="off" value="{{$d->qty_m}}"> 
+                        <input type="number" class="form-control " id="formGroupExampleInput2" min="1" placeholder="Jumlah" name="qty_m" autocomplete="off" value="{{$d->qty_m}}"> 
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Harga</label>
-                        <input type="number" class="form-control" id="formGroupExampleInput2" min="1" placeholder="Products" name="masuk" autocomplete="off" value="{{$d->masuk}}">
+                        <input type="text" class="form-control"  min="1" placeholder="Products" name="masuk" autocomplete="off" value="Rp. @money((float)$d->masuk)">
                     </div>
                       
                 </div>
@@ -37,5 +41,6 @@
         </div>
     </div>
 </div>
+
 
 @endforeach

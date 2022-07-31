@@ -60,8 +60,12 @@
                                 <td>{{ $d->created_at }}</td>
                                 <td>{{ $d->suppliers }}</td>
                                 <td>{{ $d->barang }}</td>
-                                <td>{{ $d->qty_k }}</td>
+                                <td>{{ $d->qty_k ? $d->qty_k : "belum ada"}}</td>
+                                @if($d->qty_k == null)
+                                <td>0</td>
+                                @elseif($d->qty_k != null)
                                 <td>Rp. @money((float)$d->keluar)</td>
+                                @endif
                                 <td>Rp. @money((float)$d->keluar*$d->qty_k)</td>
                             </tr>
                         @endforeach
@@ -71,4 +75,5 @@
             </div>
         </div>
     </section>
+    
 @endsection

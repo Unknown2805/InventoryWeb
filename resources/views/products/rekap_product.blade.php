@@ -48,6 +48,7 @@
                             <th>Suppliers</th>
                             <th>Barang</th>
                             <th>Jumlah masuk</th>
+                            <th>Harga Awal</th>
                             <th>Stock</th>
                             <th>Harga jual</th>
                             
@@ -60,7 +61,8 @@
                             <td>{{ $d->created_at }}</td>
                             <td>{{ $d->suppliers }}</td>
                                 <td>{{ $d->barang }}</td>
-                                <td>{{ $d->qty_m + $d->qty_k}}</td>
+                                <td>{{ $d->qty_m + $d->qty_k + $d->qty_r}}</td>
+                                <td>{{ $d->masuk}}</td>
                                 <td>{{ $d->qty_m ? $d->qty_m : $d->qty_m = "0"}}</td>
                                 <td>{{ $d->keluar}}</td>
                                 

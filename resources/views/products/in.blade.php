@@ -13,9 +13,10 @@
                 <form action={{ url('store-in') }} method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
+
                         <div class="mb-3">
                             <label for="formGroupExampleInput" class="form-label">Supplier</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Uraian" name="suppliers" autocomplete="off">
+                            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Suppliers" name="suppliers" autocomplete="off">
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label"> Nama Produk</label>
@@ -23,7 +24,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">transport</label>
-                            <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="Biaya pengiriman" name="transport" autocomplete="off">
+                            <input type="text" class="form-control" placeholder="Biaya pengiriman" id="pengiriman" name="transport" autocomplete="off">
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Stock</label>
@@ -31,7 +32,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput2" class="form-label">Harga Awal</label>
-                            <input type="number" class="form-control" id="formGroupExampleInput2" min="1" placeholder="Products" name="masuk" autocomplete="off">
+                            <input type="text" class="form-control"  min="1" placeholder="Products" id="masuk" name="masuk" autocomplete="off">
                         </div>
                           
                     </div>
@@ -107,7 +108,7 @@
                                 <td>{{ $d->created_at }}</td>
                                 <td>{{ $d->suppliers }}</td>
                                 <td>{{ $d->barang }}</td>
-                                <td>{{ $d->transport}}</td>
+                                <td>Rp. @money((float)$d->transport)</td>
                                 <td>{{ $d->qty_m == null ? "habis"  : $d->qty_m  }}</td>
                                 <td>Rp. @money((float)$d->masuk)</td>
                                 @if($d->qty_m == null)
@@ -129,4 +130,62 @@
         </div>
         @include('products/editIn')
     </section>
+
+    
+    
+    <script type="text/javascript">
+        var pengiriman = document.getElementById('pengiriman');
+        console.log(pengiriman)
+        pengiriman.addEventListener('keyup', function (e) {
+            // pengirimankan 'Rp.' pada saat form di ketik
+          // gunakan fungsi formatpengiriman() untuk mengubah angka yang di ketik menjadi format angka
+          pengiriman.value = formatpengiriman(this.value, 'Rp ');
+        });
+        
+        /* Fungsi formatpengiriman */
+        function formatpengiriman(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, '').toString(),
+            split = number_string.split(','),
+            sisa = split[0].length % 3,
+            pengiriman = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+            
+            // pengirimankan titik jika yang di input sudah menjadi angka ribuan
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                pengiriman += separator + ribuan.join('.');
+            }
+            
+            pengiriman = split[1] != undefined ? pengiriman + ',' + split[1] : pengiriman;
+            return prefix == undefined ? pengiriman : (pengiriman ? 'Rp ' + pengiriman : '');
+        }
+    </script>
+    <script type="text/javascript">
+        var masuk = document.getElementById('masuk');
+        masuk.addEventListener('keyup', function (e) {
+            // masukkan 'Rp.' pada saat form di ketik
+          // gunakan fungsi formatmasuk() untuk mengubah angka yang di ketik menjadi format angka
+          masuk.value = formatmasuk(this.value, 'Rp ');
+        });
+        
+        /* Fungsi formatmasuk */
+        function formatmasuk(angka, prefix) {
+            var number_string = angka.replace(/[^,\d]/g, '').toString(),
+            split = number_string.split(','),
+            sisa = split[0].length % 3,
+            masuk = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+            
+            // masukkan titik jika yang di input sudah menjadi angka ribuan
+            if (ribuan) {
+                separator = sisa ? '.' : '';
+                masuk += separator + ribuan.join('.');
+            }
+            
+            masuk = split[1] != undefined ? masuk + ',' + split[1] : masuk;
+            return prefix == undefined ? masuk : (masuk ? 'Rp ' + masuk : '');
+        }
+    </script>
+
+
 @endsection

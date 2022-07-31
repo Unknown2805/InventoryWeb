@@ -51,6 +51,7 @@
                             <th>Barang</th>         
                             <th>Terjual</th>
                             <th>Pendapatan</th>
+                            <th>Transport</th>
                             <th>Rugi</th>
                             <th>Untung</th>
                             <th>Bersih</th>
@@ -65,19 +66,12 @@
                             <td>{{ $d->barang }}</td>
                             <td>{{ $d->qty_k ? $d->qty_k : $d->qty_k = "0"}}</td>
                             
-                            @if( $d->masuk >= $d->keluar)
-                                <td class="text-danger">0</td>
-                                <td class="text-danger">{{ $d->masuk*$d->qty_r + $d->keluar*$d->qty_k}}</td>
-                                <td class="text-danger">0</td>
-                                <td>{{ ($d->keluar - $d->masuk)*$d->qty_k - $d->transport - ($d->qty_r*$d->masuk + $d->qty_k*$d->keluar)}}</td>
-            
-                                @elseif($d->keluar >= $d->masuk)
                                 <td class="text-success">{{ $d->keluar*$d->qty_k}}</td>
-                                <td class="text-danger">{{ $d->masuk*$d->qty_r}}</td>
+                                <td>{{ $d->transport }}</td>
+                                <td class="text-danger">{{ $d->masuk*$d->qty_r }}</td>
                                 <td class="text-success">{{ ($d->keluar - $d->masuk)*$d->qty_k}}</td>
                                 <td>{{ ($d->keluar - $d->masuk)*$d->qty_k - $d->transport - ($d->qty_r*$d->masuk)}}</td>
-                                @endif
-            
+                         
                             </tr>
                         @endforeach
             

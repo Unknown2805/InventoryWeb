@@ -32,37 +32,50 @@ class ProductsController extends Controller
         ]);
 
         $in = new Products();
-        $in-> suppliers = $request-> suppliers;
+        $result = preg_replace("/[^0-9]/", "", $request->masuk);
+        $pengiriman = preg_replace("/[^0-9]/","",$request->transport);
+        $in-> suppliers = $request->suppliers;
         $in-> barang = $request-> barang;
-        $in-> transport = $request->transport;
-        $in-> masuk = $request-> masuk;
+        $in-> transport = $pengiriman;
+        $in-> masuk = $result;
         $in-> qty_m = $request-> qty_m;        
         $in-> jenis = 'masuk';
             // dd($in);
+
             $in-> save();
             return redirect()->back();
-
     }
+
     public function editIn(Request $request,$id) {
         $in = Products::where('id',$id)->firstOrFail();
 
         $request->validate([
             'suppliers' => 'required',
             'barang' => 'required',
+            'transport' => 'required',
             'masuk' => 'required',
             'qty_m' => 'required',
         ]);
         // dd($request);
-        
-        $in->suppliers = $request->suppliers;
-        $in->barang = $request->barang;
-        $in->masuk = $request->masuk;
-        $in->qty_m = $request->qty_m;
 
-        // dd($data);
-        $in->update();
+        if($request->masuk == null){
+            return redirect()->back();
+        }else{
 
-        return redirect()->back();
+            $result2 = preg_replace("/[^0-9]/", "", $request->masuk);
+            $pengiriman2 = preg_replace("/[^0-9]/", "", $request->transport);
+            $in->suppliers = $request->suppliers;
+            $in->transport = $pengiriman2;
+            $in->barang = $request->barang;
+            $in->masuk = $result2;
+            $in->qty_m = $request->qty_m;
+    
+            // dd($in);
+            
+            $in->update();
+    
+            return redirect()->back();
+        }
     }
 //out
     public function out(){
@@ -81,19 +94,23 @@ class ProductsController extends Controller
         $out = Products::where('id',$id)->firstOrFail();
 
         $request->validate([
-            
-            
+                      
             'keluar' => 'required',
         ]);
         // dd($request);
         
-       
-        $out->keluar = $request->keluar;
+        $result3 = preg_replace("/[^0-9]/", "", $request->keluar);
+        $out->keluar = $result3;
 
         // dd($data);
-        
+        if($result3 <= $out->masuk){
+            return redirect()->back();
+
+        }elseif($result3 >= $out->masuk){
+
             $out->update();
             return redirect()->back();
+        }
         
     }
     public function editOut(Request $request,$id) {
@@ -123,13 +140,6 @@ class ProductsController extends Controller
     public function sale(){
         $sale = Products::all();
 
-        // if(!isset($sale)){
-        //     $sale->qty = 0;
-        // }
-        // if(!isset(out)){
-        //     $out->qty = 0;
-        // }
-                
         return view('products.sale',compact('sale'));
         
     }
@@ -153,6 +163,7 @@ class ProductsController extends Controller
             $trash->qty_r = 0;
 
         }elseif($request->qty_r >= 1){
+        
         $trash->qty_m = ($trash->qty_m + $trash->qty_r) - $request->qty_r;
         $trash->qty_r = $request->qty_r;
         }
