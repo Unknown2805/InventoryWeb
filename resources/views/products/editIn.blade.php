@@ -21,7 +21,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">transport</label>
-                        <input type="text" class="form-control" placeholder="Biaya pengiriman"  name="transport" autocomplete="off" value="Rp. @money((float)$d->transport)">
+                        <input type="text" class="form-control" placeholder="Biaya pengiriman"  name="transport" autocomplete="off" value="Rp. @money((float)$d->transport)" onkeyup="formatbaru(event)">
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Jumlah Barang</label>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Harga</label>
-                        <input type="text" class="form-control"  min="1" placeholder="Products" name="masuk" autocomplete="off" value="Rp. @money((float)$d->masuk)">
+                        <input type="text" class="form-control"  min="1" placeholder="Products" name="masuk" autocomplete="off" value="Rp. @money((float)$d->masuk)" onkeyup="formatbaru(event)">
                     </div>
                       
                 </div>

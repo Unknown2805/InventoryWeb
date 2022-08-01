@@ -15,7 +15,7 @@
                     <div class="mb-3">
                         <label for="formGroupExampleInput2" class="form-label">Harga</label>
                     
-                        <input type="text" class="form-control keluar" min="{{$s->masuk}}" placeholder="Products" name="keluar" autocomplete="off" value="Rp. @money((float)$s->masuk)">
+                        <input type="text" class="form-control keluar" min="{{$s->masuk}}" placeholder="Products" name="keluar" autocomplete="off" value="Rp. @money((float)$s->masuk)" onkeyup="formatbaru(event)">
                     </div>
               
    

@@ -1,10 +1,5 @@
 @extends('master')
 @section('main')
-    {{-- modal add --}}
-
-    <!-- Modal -->
-    
-
 
     @foreach ($sold as $d)
         <div class="modal fade" id="delete{{ $d->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

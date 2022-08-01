@@ -44,7 +44,7 @@ class ProductsController extends Controller
         $in-> qty_m = $request-> qty_m;        
         $in-> jenis = 'masuk';
         $in->created_at = Carbon::parse()->format("d-M-Y", strtotime('created_at'));
-            dd($in->transport);
+            // dd($in->transport);
         
             $in-> save();
             return redirect()->back();
